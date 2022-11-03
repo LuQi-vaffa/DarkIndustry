@@ -19,7 +19,6 @@ seed_keywords = {
    "payment_platform": ["第三方", "第四方", "四方", "聚合"],
    "fake_id": ["文凭", "学位证", "学历", "毕业证", "证书"],
    "card_pool": ["猫池", "池"],
-   "personal_info": ["查通话记录", "查微信记录", "聊天记录", "短信内容"],
    "hijack_traffice": ["网吧", "增值", "TR"],
    "pyramid_sale": ["返佣"]
 }
