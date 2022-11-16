@@ -1,12 +1,12 @@
 import gensim
 from spider import *
-from text_transform import text_transform
+from text_process import text_transform
 from LDA import *
 from write2mysql import ConnectMysql
 from seed_keywords import seed_keywords
 
 
-model = gensim.models.KeyedVectors.load_word2vec_format('model/sgns.wiki.word')
+model = gensim.models.KeyedVectors.load_word2vec_format('model/gensim_w2v_sg0_model')
 
 # print(model.most_similar(['男人']))     # 返回与指定词语最相近的几个词以及与对应的相似度
 # print(model.similarity('男人','女人'))   # 返回给定两个词语的相似度
@@ -18,17 +18,17 @@ model = gensim.models.KeyedVectors.load_word2vec_format('model/sgns.wiki.word')
 
 # model.add_vector("查通话记录",[])
 
-url = 'http://douban.com'  # 要爬取的url页面
-linklist,linkstr,piclist,picstr,scriptlist,scriptstr,keyword,html_text,html_title,access_flag = htmlinfo_extraction(url)
-# print(html_text)
-new_html_text  = text_transform(html_text)
-
-
-
-
-title_and_keyword = ['日韩','勇士','爵士']
-for word in title_and_keyword:
-    # for k in seed_keywords.keys():
-    for v in seed_keywords['personal_info']:
-        print("%s和%s的相似度为%f"%(word,v,model.similarity(word,v)))
+# url = 'http://douban.com'  # 要爬取的url页面
+# linklist,linkstr,piclist,picstr,scriptlist,scriptstr,keyword,html_text,html_title,access_flag = htmlinfo_extraction(url)
+# # print(html_text)
+# new_html_text  = text_transform(html_text)
+#
+#
+#
+#
+# title_and_keyword = ['日韩','勇士','爵士']
+# for word in title_and_keyword:
+#     # for k in seed_keywords.keys():
+#     for v in seed_keywords['personal_info']:
+#         print("%s和%s的相似度为%f"%(word,v,model.similarity(word,v)))
 

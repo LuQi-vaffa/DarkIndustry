@@ -99,7 +99,3 @@ def htmlinfo_extraction(URL):
 
     return linklist,linkstr,piclist,picstr,scriptlist,scriptstr,keyword,html_text,html_title,access_flag
 
-
-# url = 'http://douban.com'  # 要爬取的url页面
-# linklist,linkstr,piclist,picstr,scriptlist,scriptstr,keyword,html_text,html_title,access_flag = htmlinfo_extraction(url)
-# print(scriptlist)

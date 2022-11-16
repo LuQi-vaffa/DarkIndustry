@@ -1,5 +1,5 @@
 from spider import *
-from text_transform import text_transform
+from text_process import text_transform
 from LDA import *
 from write2mysql import ConnectMysql
 from seed_keywords import seed_keywords
@@ -28,31 +28,46 @@ def stopwordslist(filepath):
 def seg_sentence(sentence):
     sentence_seged = jieba.cut(sentence.strip())
     stopwords = stopwordslist(r'C:\Users\Lu\PycharmProjects\DarkIndustry\dataset\LDA_datasets\stop_words.txt')  # 这里加载停用词的路径
-    outstr = []
+    outlist = []
+    outstr = ''
     for word in sentence_seged:
         if word not in stopwords:
             if word != '\t' and word != '\xa0' and word != '\u2800' and word != '\u3000':
-                # outstr = outstr + word + " "
-                outstr.append(word)
+                outstr = outstr + word + " "
+                # outlist.append(word)
     return outstr
 
-print(keyword)
-print(html_title)
-
-new_keyword = seg_sentence(keyword)
-new_tile = seg_sentence(html_title)
-print(new_keyword)
-print(new_tile)
-print(seed_keywords)
-s1 = seg_sentence(new_html_text)
-print(s1)
+# print(keyword)
+# print(html_title)
+#
+# new_keyword = seg_sentence(keyword)
+# new_tile = seg_sentence(html_title)
+# print(new_keyword)
+# print(new_tile)
+# print(seed_keywords)
+# s1 = seg_sentence(new_html_text)
 # print(s1)
-title_and_keyword = new_keyword + new_tile
-print(title_and_keyword)
+# # print(s1)
+# title_and_keyword = new_keyword + new_tile
+# print(title_and_keyword)
 
 
-title_and_keyword = ['douban','日韩','勇士']
-for word in title_and_keyword:
-    for k,v in seed_keywords.items():
-        if word in v:
-            print(k)
+# title_and_keyword = ['douban','日韩','勇士']
+# for word in title_and_keyword:
+#     for k,v in seed_keywords.items():
+#         if word in v:
+#             print(k)
+
+
+stopwords = stopwordslist("dataset/LDA_datasets/stop_words.txt")  # 这里加载停用词的路径
+sentence = 'Today is a good day'
+sentence = text_transform(sentence)
+sentence_seged = jieba.cut(sentence.strip())
+outlist = []
+outstr = ""
+for word in sentence_seged:
+    if word not in stopwords:
+        if word != '\t' and word != '\xa0' and word != '\u2800' and word != '\u3000':
+            outstr = outstr + word + " "
+            outlist.append(word)
+print(outstr)
